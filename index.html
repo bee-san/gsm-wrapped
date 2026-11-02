@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Your Year in GameSentenceMiner</title>
+  <meta name="description" content="A Spotify Wrapped-style year in review for your Japanese immersion. Drop in your GameSentenceMiner gsm.db. It never leaves your device.">
+  <meta name="theme-color" content="#120d26">
+  <meta property="og:title" content="Your Year in GameSentenceMiner">
+  <meta property="og:description" content="Characters read, top titles, kanji, cards mined and your reading personality, all from your gsm.db, all in your browser.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <main id="landing" class="screen landing">
+    <div class="landing-bg" aria-hidden="true">
+      <span class="float-kana k1">読</span><span class="float-kana k2">字</span><span class="float-kana k3">年</span><span class="float-kana k4">語</span>
+    </div>
+
+    <header class="brand">
+      <img src="assets/gsm-icon.png" alt="" width="36" height="36">
+      <span>GSM Wrapped</span>
+    </header>
+
+    <section class="hero">
+      <p class="hero-kicker">今年の読書、ふりかえろう</p>
+      <h1>Your Year in<br><span class="grad">GameSentenceMiner</span></h1>
+      <p class="hero-sub">Characters read, top titles, kanji, cards mined, and your reading personality. Made from your own <code>gsm.db</code>.</p>
+    </section>
+
+    <section class="drop" id="drop" tabindex="0" role="button" aria-describedby="drop-help">
+      <input id="file" type="file" multiple accept=".db,.db-wal,.sqlite,.sqlite3,application/x-sqlite3,application/vnd.sqlite3" hidden>
+      <div class="drop-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="48" height="48"><path d="M24 31V9m0 0-8 8m8-8 8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 29v6a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4v-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </div>
+      <p class="drop-title">Drop your <code>gsm.db</code> here</p>
+      <p class="drop-help" id="drop-help">or <span class="link">choose the file</span>. Big databases are fine. Not sure where it is? Follow the steps below.</p>
+      <p class="drop-error" id="drop-error" role="alert" hidden></p>
+    </section>
+
+    <div class="drop-overlay" aria-hidden="true"><div><span>ここにドロップ</span>Drop it anywhere</div></div>
+
+    <p class="privacy">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4.5" y="11" width="15" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      Your database never leaves your device. Everything is read and calculated in this browser tab; nothing is uploaded.
+    </p>
+
+    <section class="howto" aria-labelledby="howto-title">
+      <div class="howto-head">
+        <h2 id="howto-title">Find your <code>gsm.db</code> in 4 steps</h2>
+        <div class="os-tabs" role="tablist" aria-label="Your operating system">
+          <button class="os-tab" role="tab" type="button" data-os="windows" aria-selected="true">Windows</button>
+          <button class="os-tab" role="tab" type="button" data-os="mac" aria-selected="false">macOS</button>
+          <button class="os-tab" role="tab" type="button" data-os="linux" aria-selected="false">Linux</button>
+        </div>
+      </div>
+
+      <ol class="steps" data-os-panel="windows">
+        <li class="step">
+          <figure class="shot win" aria-hidden="true">
+            <div class="wallpaper"></div>
+            <div class="flyout"><span class="ti ti-a"></span><span class="ti ti-b"></span><span class="ti ti-c"></span><span class="ti gsm target"><img src="assets/howto/tray-gsm.png" alt=""><svg class="cursor" viewBox="0 0 20 28" aria-hidden="true"><path d="M2 2v21l5.2-5.1 3.5 8.3 3.6-1.5-3.5-8.2H18z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span class="ti ti-d"></span><span class="ti ti-e"></span></div>
+            <div class="win-tip">GameSentenceMiner</div>
+            <div class="taskbar">
+            <div class="tb-apps"><span class="tb-start"><i></i><i></i><i></i><i></i></span><span class="tb-app a1"></span><span class="tb-app a2"></span><span class="tb-app a3"></span><span class="tb-app a4"></span></div>
+            <div class="tb-tray">
+              <span class="tb-chev open">^</span>
+              <svg viewBox="0 0 24 24" class="tb-ico"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" class="tb-ico"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="tb-clock"><span>21:47</span><span>02/11/2026</span></div>
+            </div>
+          </div>
+            
+          </figure>
+          <div class="step-text"><span class="step-n">1</span><h3>Find GSM in your system tray</h3><p>Look in the bottom-right corner of the taskbar, next to the clock. It’s the slime in a hard hat. Can’t see it? Click the little <b>^</b> arrow to show hidden icons.</p></div>
+        </li>
+        <li class="step">
+          <figure class="shot win" aria-hidden="true">
+            <div class="wallpaper"></div>
+            <div class="ctx">
+              <span>Open Settings</span><span>Open Text Feed</span><hr>
+              <span class="sub">Switch Profile</span><hr>
+              <span>Update GSM</span><span>Restart Python App</span><span class="hl">Open GSM Folder<svg class="cursor" viewBox="0 0 20 28" aria-hidden="true"><path d="M2 2v21l5.2-5.1 3.5 8.3 3.6-1.5-3.5-8.2H18z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Restart as Admin</span><hr>
+              <span>Exit</span>
+            </div>
+            <div class="flyout small"><span class="ti ti-a"></span><span class="ti ti-b"></span><span class="ti ti-c"></span><span class="ti gsm pressed"><img src="assets/howto/tray-gsm.png" alt=""></span><span class="ti ti-d"></span><span class="ti ti-e"></span></div>
+            <div class="taskbar">
+            <div class="tb-apps"><span class="tb-start"><i></i><i></i><i></i><i></i></span><span class="tb-app a1"></span><span class="tb-app a2"></span><span class="tb-app a3"></span><span class="tb-app a4"></span></div>
+            <div class="tb-tray">
+              <span class="tb-chev open">^</span>
+              <svg viewBox="0 0 24 24" class="tb-ico"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" class="tb-ico"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="tb-clock"><span>21:47</span><span>02/11/2026</span></div>
+            </div>
+          </div>
+            
+            <span class="click-badge">Right-click</span>
+          </figure>
+          <div class="step-text"><span class="step-n">2</span><h3>Right-click it and choose <q>Open GSM Folder</q></h3><p>A File Explorer window opens on the folder where GSM keeps your data.</p></div>
+        </li>
+        <li class="step">
+          <figure class="shot win" aria-hidden="true">
+            <div class="explorer">
+              <div class="ex-title"><span class="ex-folder"></span>GameSentenceMiner<span class="ex-ctrls"><i>–</i><i>▢</i><i>✕</i></span></div>
+              <div class="ex-address"><span>‹</span><span>›</span><span>↑</span><div class="ex-crumbs">This PC › Local Disk (C:) › Users › you › AppData › Roaming › <b>GameSentenceMiner</b></div></div>
+              <div class="ex-table">
+                <div class="ex-row ex-headrow"><span>Name</span><span>Date modified</span><span>Type</span><span>Size</span></div>
+                <div class="ex-row"><span><i class="fi dir"></i>backup</span><span>28/10/2026 19:02</span><span>File folder</span><span></span></div>
+                <div class="ex-row"><span><i class="fi dir"></i>logs</span><span>02/11/2026 21:40</span><span>File folder</span><span></span></div>
+                <div class="ex-row"><span><i class="fi dir"></i>python_venv</span><span>14/10/2026 08:15</span><span>File folder</span><span></span></div>
+                <div class="ex-row"><span><i class="fi dir"></i>temp</span><span>02/11/2026 21:44</span><span>File folder</span><span></span></div>
+                <div class="ex-row"><span><i class="fi doc"></i>config.json</span><span>01/11/2026 12:30</span><span>JSON File</span><span>20 KB</span></div>
+                <div class="ex-row sel"><span><i class="fi db"></i>gsm.db<svg class="cursor" viewBox="0 0 20 28" aria-hidden="true"><path d="M2 2v21l5.2-5.1 3.5 8.3 3.6-1.5-3.5-8.2H18z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>02/11/2026 21:46</span><span>Data Base File</span><span>742,712 KB</span></div>
+                <div class="ex-row"><span><i class="fi doc"></i>gsm.db-shm</span><span>02/11/2026 21:46</span><span>DB-SHM File</span><span>448 KB</span></div>
+                <div class="ex-row soft"><span><i class="fi doc"></i>gsm.db-wal</span><span>02/11/2026 21:46</span><span>DB-WAL File</span><span>4,120 KB</span></div>
+              </div>
+            </div>
+            
+          </figure>
+          <div class="step-text"><span class="step-n">3</span><h3>Find <code>gsm.db</code></h3><p>It’s usually near the bottom. If Windows hides file extensions it may just say <b>gsm</b> with the type <b>Data Base File</b>. GSM still open? Ctrl-click <code>gsm.db-wal</code> as well so today’s reading is included.</p></div>
+        </li>
+        <li class="step">
+          <figure class="shot win" aria-hidden="true">
+            <div class="wallpaper"></div>
+            <div class="explorer mini">
+              <div class="ex-title"><span class="ex-folder"></span>GameSentenceMiner</div>
+              <div class="ex-table">
+                <div class="ex-row"><span><i class="fi doc"></i>config.json</span></div>
+                <div class="ex-row sel"><span><i class="fi db"></i>gsm.db</span></div>
+                <div class="ex-row"><span><i class="fi doc"></i>gsm.db-shm</span></div>
+                <div class="ex-row"><span><i class="fi doc"></i>gsm.db-wal</span></div>
+              </div>
+            </div>
+            <div class="browser">
+              <div class="br-bar"><i></i><i></i><i></i><span>GSM Wrapped</span></div>
+              <div class="br-page"><div class="br-drop"><span class="br-arrow">↑</span>Drop your gsm.db here</div></div>
+            </div>
+            <div class="drag-ghost"><i class="fi db"></i>gsm.db<span class="copy">+ Copy</span><svg class="cursor" viewBox="0 0 20 28" aria-hidden="true"><path d="M2 2v21l5.2-5.1 3.5 8.3 3.6-1.5-3.5-8.2H18z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          </figure>
+          <div class="step-text"><span class="step-n">4</span><h3>Drag it onto this page</h3><p>Drop it anywhere on this page and your year starts playing. It’s read right here in your browser and never uploaded. You can even drop the whole folder.</p></div>
+        </li>
+      </ol>
+
+      <ol class="steps steps-text" data-os-panel="mac" hidden>
+        <li class="step"><div class="step-text"><span class="step-n">1</span><h3>Click GSM in the menu bar</h3><p>Top-right of your screen, near the clock. It’s the slime in a hard hat. <img class="inline-ico" src="assets/howto/tray-gsm.png" alt="GSM menu bar icon" width="22" height="22"></p></div></li>
+        <li class="step"><div class="step-text"><span class="step-n">2</span><h3>Choose <q>Open GSM Folder</q></h3><p>A Finder window opens on your GSM data folder.</p></div></li>
+        <li class="step"><div class="step-text"><span class="step-n">3</span><h3>Find <code>gsm.db</code></h3><p>Usually <code>~/.config/GameSentenceMiner/gsm.db</code>. GSM still open? ⌘-click <code>gsm.db-wal</code> too.</p></div></li>
+        <li class="step"><div class="step-text"><span class="step-n">4</span><h3>Drag it onto this page</h3><p>Drop it anywhere here. Nothing is uploaded.</p></div></li>
+      </ol>
+
+      <ol class="steps steps-text" data-os-panel="linux" hidden>
+        <li class="step"><div class="step-text"><span class="step-n">1</span><h3>Find GSM in your system tray</h3><p>Where the tray lives depends on your desktop (KDE, GNOME with AppIndicator, etc.). <img class="inline-ico" src="assets/howto/tray-gsm.png" alt="GSM tray icon" width="22" height="22"></p></div></li>
+        <li class="step"><div class="step-text"><span class="step-n">2</span><h3>Right-click → <q>Open GSM Folder</q></h3><p>Your file manager opens on the GSM data folder.</p></div></li>
+        <li class="step"><div class="step-text"><span class="step-n">3</span><h3>Find <code>gsm.db</code></h3><p>Usually <code>~/.config/GameSentenceMiner/gsm.db</code>. GSM still open? Ctrl-click <code>gsm.db-wal</code> too.</p></div></li>
+        <li class="step"><div class="step-text"><span class="step-n">4</span><h3>Drag it onto this page</h3><p>Drop it anywhere here. Nothing is uploaded.</p></div></li>
+      </ol>
+
+      <details class="help">
+        <summary>Can’t find the GSM icon?</summary>
+        <ul>
+          <li>In GSM’s main window, use the <b>File</b> menu → <b>Open GSM Folder</b>.</li>
+          <li><b>Windows</b>: paste <code>%APPDATA%\GameSentenceMiner</code> into the File Explorer address bar and press Enter.</li>
+          <li><b>macOS / Linux</b>: <code>~/.config/GameSentenceMiner/gsm.db</code>. On macOS press <kbd>⌘</kbd><kbd>⇧</kbd><kbd>G</kbd> in Finder to type the path.</li>
+          <li><b>Moved your data folder?</b> GSM shows the exact database path under <i>Settings → Data Folder</i>.</li>
+        </ul>
+      </details>
+    </section>
+
+    <p class="demo-line"><button class="text-btn" id="demo-btn" type="button">No GSM yet? Watch a demo →</button></p>
+
+    <footer class="foot">
+      A community project for <a href="https://github.com/bpwhelan/GameSentenceMiner" target="_blank" rel="noopener">GameSentenceMiner</a> users ·
+      <a href="https://github.com/bee-san/gsm-wrapped" target="_blank" rel="noopener">Source</a>
+    </footer>
+  </main>
+
+  <section id="loading" class="screen loading" hidden aria-live="polite">
+    <div class="loader" aria-hidden="true"><span>読</span><span>み</span><span>込</span><span>み</span><span>中</span></div>
+    <p id="loading-text">Opening your database</p>
+  </section>
+
+  <section id="years" class="screen years" hidden>
+    <h2>Which year?</h2>
+    <p class="years-sub" id="years-sub"></p>
+    <div class="year-list" id="year-list"></div>
+    <button class="text-btn" type="button" data-action="home">← Use a different file</button>
+  </section>
+
+  <section id="story" class="story" hidden aria-roledescription="carousel">
+    <div class="story-frame" id="story-frame">
+      <div class="progress" id="progress"></div>
+      <div class="slides" id="slides" aria-live="polite"></div>
+      <button class="story-close" type="button" id="story-close" aria-label="Exit story">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="tap-hint" id="tap-hint" aria-hidden="true">Tap or press → to continue</div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,12 @@
+import { openFromDisk } from './node-source.mjs';
+import { listYears, computeWrapped, loadArchivedDays } from '../js/stats.js';
+const [p, y, full] = process.argv.slice(2);
+const { db } = await openFromDisk(p);
+console.log(listYears(db));
+const t0 = Date.now();
+const archived = await loadArchivedDays(db, Number(y));
+const r = computeWrapped(db, Number(y), { archived });
+console.log('ms', Date.now() - t0, 'archived days', archived.length);
+const trim = JSON.parse(JSON.stringify(r, (k, v) => (k === 'cover' && v ? v.slice(0, 40) + '…' : v)));
+if (full) console.dir(trim, { depth: 4, maxArrayLength: 12 });
+else console.dir({ totals: trim.totals, games: trim.games.map((g) => [g.title, g.chars, g.cards, g.completed]), kanji: trim.kanji, words: trim.words, first: trim.firstLine, last: trim.lastLine, persona: trim.persona.key, finished: trim.finished.map((g) => g.title) }, { depth: 4 });

@@ -1,0 +1,10 @@
+{
+  "name": "gsm-wrapped",
+  "private": true,
+  "type": "module",
+  "description": "Your Year in GameSentenceMiner: a static, in-browser year in review built from gsm.db",
+  "scripts": {
+    "serve": "python3 -m http.server 8642 --bind 127.0.0.1",
+    "demo": "python3 test/make-demo-db.py /tmp/gsm-wrapped-demo.db && node test/make-demo.mjs /tmp/gsm-wrapped-demo.db 2025"
+  }
+}
