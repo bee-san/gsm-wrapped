@@ -726,13 +726,6 @@ button {
   font-family: var(--font-jp);
 }
 
-.foot-note {
-  margin-top: auto;
-  font-size: 3cqw;
-  color: var(--muted);
-  padding-bottom: 2cqh;
-}
-
 .spacer {
   flex: 1;
 }

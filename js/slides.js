@@ -81,7 +81,7 @@ export function buildSlides(r, { isDemo = false } = {}) {
      <h1 class="big xl rv" ${d(1)}>${r.year}</h1>
      <p class="headline rv" ${d(2)}>Your year in GameSentenceMiner${soFar ? ' <span style="opacity:.7">(so far)</span>' : ''}</p>
      <div class="spacer"></div>
-     <p class="lead rv" ${d(3)}>${isDemo ? 'This is a demo with made-up data. ' : ''}Every line you read, every card you mined. Let’s look back.</p>`,
+     ${isDemo ? `<p class="lead rv" ${d(3)}>Demo with made-up data.</p>` : ''}`,
   );
 
   // 2 · characters
@@ -100,8 +100,7 @@ export function buildSlides(r, { isDemo = false } = {}) {
        <div class="equiv rv" ${d(5)}><span class="ico">稿</span><p>or <b>${int(Math.ceil(t.chars / 400))}</b> sheets of <span class="jp">原稿用紙</span> manuscript paper</p></div>
        <div class="equiv rv" ${d(6)}><span class="ico">行</span><p>across <b>${int(t.lines)}</b> lines</p></div>
      </div>
-     ${r.thirdParty && r.thirdParty.chars ? `<div class="chips rv" ${d(7)}><span class="chip">+ ${int(r.thirdParty.chars)} more logged from other sources</span></div>` : ''}
-     <p class="foot-note rv" ${d(7)}>Punctuation isn’t counted, same as GSM. Light novel ≈ 100,000 characters.</p>`,
+     ${r.thirdParty && r.thirdParty.chars ? `<div class="chips rv" ${d(7)}><span class="chip">+ ${int(r.thirdParty.chars)} more logged from other sources</span></div>` : ''}`,
   );
 
   // 3 · time
@@ -114,13 +113,12 @@ export function buildSlides(r, { isDemo = false } = {}) {
        <p class="kicker-jp rv">読書時間</p>
        <p class="kicker rv" ${d(1)}>You spent</p>
        <p class="big xl rv" ${d(2)}>${h >= 1 ? `${count(Math.round(h))}<small> hours</small>` : `${count(Math.round(t.seconds / 60))}<small> min</small>`}</p>
-       <p class="lead rv" ${d(3)}>reading in Japanese. That’s <b>${int(t.seconds / 60)} minutes</b> of story.</p>
+       <p class="lead rv" ${d(3)}>reading Japanese.</p>
        <div class="stat-row">
          <div class="stat rv" ${d(4)}><b>${int(t.activeDays)}</b><span>days active</span></div>
          <div class="stat rv" ${d(5)}><b>${int(t.sessions)}</b><span>sessions</span></div>
          <div class="stat rv" ${d(6)}><b>${duration(t.avgSessionSeconds)}</b><span>avg session</span></div>
-       </div>
-       <p class="foot-note rv" ${d(7)}>Reading time uses GSM’s adaptive estimate, so idle gaps don’t count.</p>`,
+       </div>`,
     );
   }
 
@@ -159,8 +157,7 @@ export function buildSlides(r, { isDemo = false } = {}) {
              (g, i) => `<li class="rv" ${d(2 + i)}><span class="rank">${i + 1}</span>${coverHtml(g)}<div class="t"><b>${esc(g.title)}</b><span>${compact(g.chars)} chars · ${hours(g.seconds)}h${g.isNew ? ' · new' : ''}</span></div></li>`,
            )
            .join('')}
-       </ol>
-       <p class="foot-note rv" ${d(8)}>${plural(t.games, 'title')} read this year${t.newGames ? `, ${int(t.newGames)} of them new to you` : ''}.</p>`,
+       </ol>`,
     );
   }
 
@@ -183,8 +180,7 @@ export function buildSlides(r, { isDemo = false } = {}) {
          peakLabel: compact(pm.chars),
          tips: r.months.map((m) => `${MONTHS[m.month]}: ${int(m.chars)} chars`),
          height: 170,
-       })}</div>
-       <p class="foot-note rv" ${d(5)}>Active in ${plural(activeMonths.length, 'month')} of ${soFar ? now.getMonth() + 1 : 12}.</p>`,
+       })}</div>`,
     );
   }
 
@@ -259,8 +255,7 @@ export function buildSlides(r, { isDemo = false } = {}) {
          peakLabel: r.fastestMonth ? `${compact(r.fastestMonth.speed)}/h` : '',
          tips: r.months.map((m) => (m.speed ? `${MONTHS[m.month]}: ${int(m.speed)} chars/hour` : `${MONTHS[m.month]}: under an hour read`)),
          height: 120,
-       })}</div>` : ''}
-       <p class="foot-note rv" ${d(6)}>Months with less than an hour of reading are left out.</p>`,
+       })}</div>` : ''}`,
     );
   }
 
@@ -285,7 +280,6 @@ export function buildSlides(r, { isDemo = false } = {}) {
 
   // 11 · words
   if (r.words && r.words.top.length >= 3) {
-    const showNew = r.kanji.hasHistory && r.words.newWords;
     add(
       't-violet',
       `${shapes([[66, 70, 44, 'rgba(255,79,163,.4)'], [-10, 0, 26, 'rgba(200,240,49,.55)', '30%', -18]])}
@@ -295,8 +289,7 @@ export function buildSlides(r, { isDemo = false } = {}) {
        <ol class="word-list">${r.words.top
          .slice(0, 7)
          .map(([w, c], i) => `<li class="rv" ${d(2 + Math.min(i, 5))}><span class="n">${i + 1}</span><span class="w">${esc(w)}</span><span class="c">${int(c)}×</span></li>`)
-         .join('')}</ol>
-       <p class="foot-note rv" ${d(8)}><b>${int(r.words.unique)}</b> different words this year${showNew ? ` · <b>${int(r.words.newWords)}</b> seen for the first time` : ''}.</p>`,
+         .join('')}</ol>`,
     );
   }
 
@@ -349,7 +342,6 @@ export function buildSlides(r, { isDemo = false } = {}) {
        <span class="wm">完</span>
        <p class="kicker-jp rv">読了</p>
        <p class="headline rv" ${d(1)}>Finished and read this year</p>
-       <p class="lead rv" ${d(2)}>${plural(r.finished.length, 'title')} you’ve marked complete in GSM.</p>
        <div class="finished-grid">${r.finished
          .slice(0, 6)
          .map((g, i) => `<figure class="rv pop" ${d(3 + i)}><div style="position:relative">${coverHtml(g)}<span class="stamp">完</span></div><figcaption>${esc(g.title)}</figcaption></figure>`)
