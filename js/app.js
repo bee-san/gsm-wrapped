@@ -334,9 +334,9 @@ function init() {
     drop.classList.add('dragging');
   });
   window.addEventListener('dragover', (e) => {
-    if (!landingVisible()) return;
+    // Always swallow file drags so a stray drop never navigates away from the story.
     e.preventDefault();
-    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (e.dataTransfer) e.dataTransfer.dropEffect = landingVisible() ? 'copy' : 'none';
   });
   window.addEventListener('dragleave', () => {
     depth = Math.max(0, depth - 1);
@@ -346,8 +346,8 @@ function init() {
     }
   });
   window.addEventListener('drop', async (e) => {
-    if (!landingVisible()) return;
     e.preventDefault();
+    if (!landingVisible()) return;
     depth = 0;
     document.body.classList.remove('dragging');
     drop.classList.remove('dragging');
