@@ -1,5 +1,7 @@
 # Your Year in GameSentenceMiner
 
+[![Discord](https://img.shields.io/discord/754001738184392704?logo=discord&label=Discord)](https://discord.skerritt.blog)
+
 A Spotify Wrapped-style year in review for [GameSentenceMiner](https://github.com/bpwhelan/GameSentenceMiner) (GSM).
 Drop your `gsm.db` onto the page and get a story of your year in Japanese: characters read, hours,
 your top titles, kanji, words, cards mined, records, reading speed, your first line of the year and a
